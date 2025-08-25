@@ -44,6 +44,24 @@
         "UUID"
       ],
       "main": "dist/index.html?feature=excel-sql"
+    },
+    {
+      "code": "excel_json_extractor",
+      "explain": "Excel JSON 数据提取器 - 从Excel中提取JSON字段数据",
+      "cmds": [
+        "excel",
+        "json",
+        "提取",
+        "解析",
+        "转换",
+        "Excel JSON",
+        "JSON提取",
+        "数据提取",
+        "JSONPath",
+        "路径解析",
+        "字段提取"
+      ],
+      "main": "dist/index.html?feature=excel-json"
     }
   ]
 }

@@ -134,3 +134,8 @@ vite.config.ts.timestamp-*
 
 # uTools plugin specific
 *.upx
+
+# Tests and development files (optional: uncomment to ignore)
+# tests/
+# *.test.js
+# *.spec.js

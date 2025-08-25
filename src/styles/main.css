@@ -512,8 +512,8 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .file-drop-zone {
     border: 2px dashed #d1d5db;
-    border-radius: 8px;
-    padding: 40px 20px;
+    border-radius: 6px;
+    padding: 15px 10px;
     text-align: center;
     cursor: pointer;
     transition: all 0.2s;
@@ -528,23 +528,25 @@ textarea::-webkit-scrollbar-thumb:hover {
 .file-drop-zone.dragover {
     border-color: #4f46e5;
     background: #eef2ff;
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 .file-drop-content svg {
     color: #9ca3af;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    width: 24px;
+    height: 24px;
 }
 
 .file-drop-content p {
     color: #374151;
-    margin-bottom: 8px;
-    font-size: 1em;
+    margin-bottom: 4px;
+    font-size: 0.85em;
 }
 
 .file-drop-content small {
     color: #6b7280;
-    font-size: 0.85em;
+    font-size: 0.75em;
 }
 
 .file-info {
@@ -564,12 +566,12 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .btn-remove {
-    padding: 4px 12px;
+    padding: 3px 8px;
     background: #dc2626;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 0.8em;
+    font-size: 0.75em;
     cursor: pointer;
     transition: background 0.2s;
 }
@@ -1783,21 +1785,28 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-bottom: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .feature-card {
     background: white;
     border: 2px solid #e5e7eb;
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 10px;
+    padding: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .feature-card:hover {
@@ -1811,44 +1820,48 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .feature-icon {
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 16px;
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 12px;
     background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    flex-shrink: 0;
 }
 
 .feature-card h3 {
     color: #1f2937;
-    font-size: 1.25em;
+    font-size: 1.1em;
     font-weight: 600;
     margin-bottom: 8px;
+    line-height: 1.3;
 }
 
 .feature-card p {
     color: #6b7280;
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-bottom: 16px;
+    font-size: 0.85em;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    flex: 1;
 }
 
 .feature-tags {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .tag {
     background: #f3f4f6;
     color: #374151;
-    padding: 4px 8px;
+    padding: 3px 6px;
     border-radius: 4px;
-    font-size: 0.75em;
+    font-size: 0.7em;
     font-weight: 500;
 }
 
@@ -1943,11 +1956,29 @@ footer a:hover {
 @media (max-width: 768px) {
     .feature-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 12px;
+        margin-bottom: 20px;
     }
     
     .feature-card {
-        padding: 20px;
+        padding: 14px;
+        min-height: 160px;
+    }
+    
+    .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .feature-card h3 {
+        font-size: 1em;
+        margin-bottom: 6px;
+    }
+    
+    .feature-card p {
+        font-size: 0.8em;
+        margin-bottom: 10px;
     }
     
     .quick-links {
@@ -1956,5 +1987,24 @@ footer a:hover {
     
     .quick-btn {
         min-width: auto;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .feature-grid {
+        gap: 14px;
+    }
+    
+    .feature-card {
+        padding: 14px;
+        min-height: 180px;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.05em;
+    }
+    
+    .feature-card p {
+        font-size: 0.8em;
     }
 }

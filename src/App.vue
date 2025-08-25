@@ -29,6 +29,9 @@
       
       <!-- Excel 转 SQL 生成器 -->
       <ExcelSqlGenerator v-if="currentView === 'excel-sql'" />
+      
+      <!-- Excel JSON 数据提取器 -->
+      <ExcelJsonExtractor v-if="currentView === 'excel-json'" />
     </main>
 
     <footer>
@@ -46,6 +49,7 @@ import { ref, computed, onMounted } from 'vue'
 import HomePage from './components/HomePage.vue'
 import SqlInGenerator from './components/SqlInGenerator.vue'
 import ExcelSqlGenerator from './components/ExcelSqlGenerator.vue'
+import ExcelJsonExtractor from './components/ExcelJsonExtractor.vue'
 
 // 响应式数据
 const currentView = ref('home')
@@ -59,6 +63,8 @@ const pageTitle = computed(() => {
       return 'SQL IN 条件生成器'
     case 'excel-sql':
       return 'Excel 转 SQL 生成器'
+    case 'excel-json':
+      return 'Excel JSON 数据提取器'
     default:
       return 'SQL 工具集'
   }
@@ -73,6 +79,8 @@ const pageSubtitle = computed(() => {
       return '智能分析多种分隔符，自动去除引号，生成SQL IN条件'
     case 'excel-sql':
       return '支持批量插入、自定义列、动态值（时间戳、雪花ID、UUID等）'
+    case 'excel-json':
+      return '从Excel中提取JSON字段数据，支持JSONPath提取，生成新的Excel文件'
     default:
       return '强大的SQL开发辅助工具集合'
   }
@@ -102,7 +110,7 @@ const initializeFromUrl = () => {
   const urlParams = new URLSearchParams(window.location.search)
   const feature = urlParams.get('feature')
   
-  if (feature && (feature === 'sql-in' || feature === 'excel-sql')) {
+  if (feature && (feature === 'sql-in' || feature === 'excel-sql' || feature === 'excel-json')) {
     currentView.value = feature
   }
 }

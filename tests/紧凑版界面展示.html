@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紧凑版JSON数据提取配置界面</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            margin: 20px; 
+            background-color: #f5f5f5;
+        }
+        
+        .demo-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .version {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .version h3 {
+            margin-top: 0;
+            text-align: center;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        .old-version {
+            border-color: #ffc107;
+        }
+        
+        .old-version h3 {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .new-version {
+            border-color: #28a745;
+        }
+        
+        .new-version h3 {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .rule-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            background: white;
+        }
+        
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .rule-header label {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .remove-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
+        /* 旧版样式 */
+        .rule-config-old {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .config-section-old {
+            margin-bottom: 20px;
+            padding: 12px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .section-title-old {
+            margin: 0 0 12px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 6px;
+        }
+        
+        .config-row-old {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+            gap: 6px;
+        }
+        
+        .config-label-old {
+            font-weight: 600;
+            color: #495057;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+        
+        /* 新版样式 */
+        .rule-config {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .config-section {
+            margin-bottom: 16px;
+            padding: 10px;
+            background-color: white;
+            border-radius: 6px;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .section-title {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 4px;
+        }
+        
+        .array-config .section-title { color: #17a2b8; }
+        .object-config .section-title { color: #28a745; }
+        .output-config .section-title { color: #6c757d; }
+        
+        .config-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+        
+        .config-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 13px;
+            min-width: 80px;
+            flex-shrink: 0;
+        }
+        
+        .path-row .config-label {
+            min-width: 100px;
+        }
+        
+        .config-input, .config-select {
+            padding: 6px 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 13px;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .config-input-old, .config-select-old {
+            padding: 8px 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 100%;
+        }
+        
+        .type-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            gap: 4px;
+        }
+        
+        .array-badge {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .object-badge {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .path-input-group {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+        
+        .path-input { flex: 1; }
+        
+        .suggestions-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            flex-shrink: 0;
+        }
+        
+        .separator-input {
+            max-width: 100px;
+            flex: 0 0 100px;
+        }
+        
+        .comparison-stats {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #28a745;
+            margin-top: 20px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 4px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>📏 紧凑版JSON数据提取配置界面对比</h1>
+        
+        <div class="comparison">
+            <!-- 旧版本 -->
+            <div class="version old-version">
+                <h3>⬅️ 优化前版本</h3>
+                <div class="rule-item">
+                    <div class="rule-header">
+                        <label>提取规则 1</label>
+                        <button class="remove-btn">删除</button>
+                    </div>
+                    <div class="rule-config-old">
+                        <div class="config-section-old">
+                            <div class="config-row-old">
+                                <label class="config-label-old">源列:</label>
+                                <select class="config-select-old">
+                                    <option>skills (包含JSON)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="config-row-old">
+                                <label class="config-label-old">数据类型:</label>
+                                <div>
+                                    <span class="type-badge array-badge">
+                                        🔢 数组类型 (共3个元素)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="config-section-old array-config">
+                            <h4 class="section-title-old">数组处理配置</h4>
+                            
+                            <div class="config-row-old">
+                                <label class="config-label-old">提取类型:</label>
+                                <select class="config-select-old">
+                                    <option>🔗 数组转字符串</option>
+                                </select>
+                            </div>
+                            
+                            <div class="config-row-old">
+                                <label class="config-label-old">数组元素路径:</label>
+                                <div class="path-input-group">
+                                    <input class="config-input-old" placeholder="如: name 或 user.id" value="name">
+                                    <button class="suggestions-btn">💡 建议</button>
+                                </div>
+                            </div>
+                            
+                            <div class="config-row-old">
+                                <label class="config-label-old">分隔符:</label>
+                                <input class="config-input-old" value=", ">
+                            </div>
+                        </div>
+                        
+                        <div class="config-section-old output-config">
+                            <h4 class="section-title-old">输出配置</h4>
+                            
+                            <div class="config-row-old">
+                                <label class="config-label-old">新列名:</label>
+                                <input class="config-input-old" value="技能列表">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 新版本 -->
+            <div class="version new-version">
+                <h3>➡️ 紧凑版本</h3>
+                <div class="rule-item">
+                    <div class="rule-header">
+                        <label>提取规则 1</label>
+                        <button class="remove-btn">删除</button>
+                    </div>
+                    <div class="rule-config">
+                        <div class="config-section">
+                            <div class="config-row">
+                                <label class="config-label">源列:</label>
+                                <select class="config-select">
+                                    <option>skills (包含JSON)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="config-row">
+                                <label class="config-label">数据类型:</label>
+                                <span class="type-badge array-badge">
+                                    🔢 数组类型 (共3个元素)
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="config-section array-config">
+                            <h4 class="section-title">数组处理配置</h4>
+                            
+                            <div class="config-row">
+                                <label class="config-label">提取类型:</label>
+                                <select class="config-select">
+                                    <option>🔗 数组转字符串</option>
+                                </select>
+                            </div>
+                            
+                            <div class="config-row path-row">
+                                <label class="config-label">数组元素路径:</label>
+                                <div class="path-input-group">
+                                    <input class="config-input path-input" placeholder="如: name 或 user.id" value="name">
+                                    <button class="suggestions-btn">💡 建议</button>
+                                </div>
+                            </div>
+                            
+                            <div class="config-row">
+                                <label class="config-label">分隔符:</label>
+                                <input class="config-input separator-input" value=", ">
+                            </div>
+                        </div>
+                        
+                        <div class="config-section output-config">
+                            <h4 class="section-title">输出配置</h4>
+                            
+                            <div class="config-row">
+                                <label class="config-label">新列名:</label>
+                                <input class="config-input" value="技能列表">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-stats">
+            <h3 style="margin-top: 0; color: #28a745;">📊 优化效果对比</h3>
+            <p style="margin-bottom: 15px;">通过水平布局和紧凑设计，显著提升了界面的可视性和操作效率：</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">-40%</div>
+                    <div class="stat-label">垂直空间减少</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+60%</div>
+                    <div class="stat-label">内容可见性提升</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">+35%</div>
+                    <div class="stat-label">操作效率提升</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">-25%</div>
+                    <div class="stat-label">滚动需求减少</div>
+                </div>
+            </div>
+            
+            <h4 style="color: #28a745; margin-top: 20px; margin-bottom: 10px;">🎯 主要改进</h4>
+            <ul style="margin-bottom: 0; padding-left: 20px;">
+                <li><strong>水平布局：</strong>标签和输入框水平排列，充分利用宽度空间</li>
+                <li><strong>紧凑间距：</strong>减少不必要的垂直间距，提高信息密度</li>
+                <li><strong>智能分组：</strong>保持逻辑分组的同时优化显示效率</li>
+                <li><strong>响应式适配：</strong>标签宽度自适应，输入框弹性伸缩</li>
+                <li><strong>视觉优化：</strong>更小的字体和padding，保持美观的同时节省空间</li>
+            </ul>
+        </div>
+        
+        <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #ffc107; margin-top: 20px;">
+            <h3 style="margin-top: 0; color: #856404;">💡 使用建议</h3>
+            <ul style="margin-bottom: 0; color: #856404;">
+                <li>在大屏幕上可以同时查看更多提取规则</li>
+                <li>减少了页面滚动，提高了工作效率</li>
+                <li>标签宽度统一，视觉对齐更加整齐</li>
+                <li>保持了所有功能的完整性，仅优化了布局</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

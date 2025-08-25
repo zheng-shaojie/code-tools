@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合并单元格功能测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .merge-cell { background-color: #e8f5e8 !important; border: 2px solid #27ae60 !important; }
+        .merge-indicator { 
+            background-color: #27ae60; color: white; font-size: 10px; 
+            padding: 1px 4px; border-radius: 3px; margin-left: 5px; font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
+    <h1>合并单元格功能测试</h1>
+    
+    <h2>模拟数组展开的合并效果</h2>
+    <p>这个表格展示了当数组展开时，原始数据列应该如何合并：</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Tags (数组展开)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="3" class="merge-cell">1 <span class="merge-indicator">合并</span></td>
+                <td rowspan="3" class="merge-cell">John <span class="merge-indicator">合并</span></td>
+                <td>JavaScript</td>
+            </tr>
+            <tr>
+                <td>Vue.js</td>
+            </tr>
+            <tr>
+                <td>React</td>
+            </tr>
+            <tr>
+                <td rowspan="2" class="merge-cell">2 <span class="merge-indicator">合并</span></td>
+                <td rowspan="2" class="merge-cell">Jane <span class="merge-indicator">合并</span></td>
+                <td>Python</td>
+            </tr>
+            <tr>
+                <td>Django</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h2>合并单元格功能说明</h2>
+    <ul>
+        <li>当数组展开时，原始数据的列会被合并显示</li>
+        <li>合并的单元格会有绿色边框和浅绿色背景</li>
+        <li>合并单元格会显示"合并"标识</li>
+        <li>这样可以清楚地看到哪些数据是重复的，哪些是展开的数组元素</li>
+    </ul>
+    
+    <h2>技术实现</h2>
+    <p>在ExcelJsonExtractor组件中：</p>
+    <ul>
+        <li>DataExtractor会计算合并区域信息</li>
+        <li>Vue组件会根据合并信息渲染HTML表格</li>
+        <li>实际Excel文件会使用xlsx库的合并单元格功能</li>
+    </ul>
+</body>
+</html>
