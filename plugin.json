@@ -1,0 +1,49 @@
+{
+  "name": "SQL 工具集",
+  "version": "2.0.0",
+  "description": "强大的SQL开发辅助工具集合，支持智能分析、Excel转换、批量插入等功能",
+  "author": "Qoder",
+  "homepage": "",
+  "logo": "logo.png",
+  "preload": "preload.js",
+  "development": {
+    "main": "index.html"
+  },
+  "main": "dist/index.html",
+  "features": [
+    {
+      "code": "sql_in_generator",
+      "explain": "SQL IN 条件生成器 - 智能分析多种分隔符",
+      "cmds": [
+        "sql",
+        "in",
+        "条件",
+        "生成",
+        "查询",
+        "SQL IN",
+        "in条件",
+        "智能分析",
+        "分隔符"
+      ],
+      "main": "dist/index.html?feature=sql-in"
+    },
+    {
+      "code": "excel_sql_generator",
+      "explain": "Excel 转 SQL 生成器 - 支持批量插入、自定义列、动态值",
+      "cmds": [
+        "excel",
+        "sql",
+        "insert",
+        "update",
+        "导入",
+        "Excel转SQL",
+        "数据导入",
+        "批量插入",
+        "自定义列",
+        "雪花ID",
+        "UUID"
+      ],
+      "main": "dist/index.html?feature=excel-sql"
+    }
+  ]
+}

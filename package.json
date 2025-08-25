@@ -1,0 +1,39 @@
+{
+  "name": "sql-toolkit-utools",
+  "version": "2.0.0",
+  "description": "强大的SQL开发辅助工具集合 - uTools插件",
+  "main": "dist/index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "npx vite build",
+    "preview": "vite preview",
+    "build:utools": "npm run clean && npx vite build && npm run copy-assets && npm run fix-plugin-config",
+    "copy-assets": "cp logo.png preload.js README.md dist/",
+    "fix-plugin-config": "node scripts/fix-plugin-config.js",
+    "clean": "rm -rf dist",
+    "serve:dist": "cd dist && python3 -m http.server 8080"
+  },
+  "keywords": [
+    "utools",
+    "sql",
+    "database",
+    "excel",
+    "vue",
+    "vite"
+  ],
+  "author": "Qoder",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "terser": "^5.43.1",
+    "vite": "^5.0.0",
+    "vue": "^3.3.0"
+  },
+  "dependencies": {
+    "xlsx": "^0.18.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}
