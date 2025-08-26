@@ -34,7 +34,7 @@
 
 .upload-area:hover,
 .upload-area.drag-over {
-  border-color: #4f46e5;
+  border-color: #10b981;
   background: #f8fafc;
 }
 
@@ -377,7 +377,7 @@ th {
 }
 
 .suggestions-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: white;
   border: none;
   padding: 6px 10px;
@@ -394,7 +394,7 @@ th {
 
 .suggestions-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 8px rgba(16, 185, 129, 0.3);
 }
 
 .suggestions-btn:active {
@@ -811,7 +811,7 @@ th {
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    background: linear-gradient(90deg, #10b981, #059669);
     border-radius: 4px;
     transition: width 0.3s ease;
 }

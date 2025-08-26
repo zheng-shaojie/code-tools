@@ -7,7 +7,7 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #6ee7b7 0%, #34d399 100%);
     min-height: 100vh;
     padding: 20px;
     line-height: 1.6;
@@ -24,7 +24,7 @@ body {
 
 /* 头部样式 */
 header {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
     padding: 20px;
 }
@@ -174,7 +174,7 @@ main {
 
 #separator:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 #customSeparator {
@@ -188,7 +188,7 @@ main {
 
 #customSeparator:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 #inputText {
@@ -206,7 +206,7 @@ main {
 
 #inputText:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
     background: white;
 }
 
@@ -252,13 +252,13 @@ main {
 .option-row input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #4f46e5;
+    accent-color: #10b981;
 }
 
 .option-row input[type="radio"] {
     width: 16px;
     height: 16px;
-    accent-color: #4f46e5;
+    accent-color: #10b981;
 }
 
 .radio-group {
@@ -287,7 +287,7 @@ main {
 
 .option-row input[type="text"]:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 /* 按钮区域 */
@@ -310,14 +310,14 @@ main {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .btn-secondary {
@@ -521,12 +521,12 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .file-drop-zone:hover {
-    border-color: #4f46e5;
+    border-color: #10b981;
     background: #f8fafc;
 }
 
 .file-drop-zone.dragover {
-    border-color: #4f46e5;
+    border-color: #10b981;
     background: #eef2ff;
     transform: scale(1.01);
 }
@@ -752,7 +752,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .header-config input[type="number"]:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .header-config small {
@@ -794,7 +794,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .quote-select:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 /* 引号选项样式 */
@@ -817,7 +817,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 .quote-option input[type="radio"] {
     width: 12px;
     height: 12px;
-    accent-color: #4f46e5;
+    accent-color: #10b981;
 }
 
 /* 输出区域优化 */
@@ -839,7 +839,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 .format-option input[type="checkbox"] {
     width: 14px;
     height: 14px;
-    accent-color: #4f46e5;
+    accent-color: #10b981;
 }
 
 .limit-select {
@@ -866,7 +866,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .btn-page {
     padding: 4px 12px;
-    background: #4f46e5;
+    background: #10b981;
     color: white;
     border: none;
     border-radius: 4px;
@@ -951,7 +951,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 .column-name-input:focus,
 .column-value-input:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .value-type-select,
@@ -968,7 +968,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 .start-value-select:focus,
 .quote-mode-select:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .btn-remove-column {
@@ -1069,7 +1069,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 .condition-operator:focus,
 .condition-value:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .btn-remove-condition {
@@ -1445,7 +1445,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .config-row input[type="text"]:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 /* 列映射配置 */
@@ -1507,13 +1507,13 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .db-field-input:focus {
     outline: none;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .mapping-checkbox {
     width: 16px;
     height: 16px;
-    accent-color: #4f46e5;
+    accent-color: #10b981;
 }
 
 /* 输出区域美化 */
@@ -1846,9 +1846,9 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 .feature-card:hover {
-    border-color: #4f46e5;
+    border-color: #10b981;
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.15);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
 }
 
 .feature-card:active {
@@ -1859,7 +1859,7 @@ textarea::-webkit-scrollbar-thumb:hover {
     width: 45px;
     height: 45px;
     margin: 0 auto 12px;
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1935,7 +1935,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 
 .quick-btn:hover {
     background: #f9fafb;
-    border-color: #4f46e5;
+    border-color: #10b981;
 }
 
 .quick-btn span {
@@ -1966,7 +1966,7 @@ footer p {
 }
 
 footer a {
-    color: #4f46e5;
+    color: #10b981;
     text-decoration: none;
 }
 
