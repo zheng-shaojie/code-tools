@@ -52,23 +52,24 @@
       </div>
     </div>
 
-    <div v-if="sheets.length > 0" class="sheet-selector">
-      <label>选择工作表:</label>
-      <select v-model="selectedSheet" @change="loadSheetData">
-        <option value="">请选择工作表</option>
-        <option v-for="sheet in sheets" :key="sheet" :value="sheet">{{ sheet }}</option>
-      </select>
-    </div>
-
-    <div v-if="selectedSheet" class="header-skip">
-      <label>跳过表头行数:</label>
-      <input 
-        type="number" 
-        v-model.number="skipRows" 
-        min="0" 
-        max="10" 
-        @change="processData">
-      <span class="helper-text">从第 {{ skipRows + 1 }} 行开始读取数据</span>
+    <div v-if="sheets.length > 0" class="sheet-header-skip">
+      <div class="sheet-config">
+        <label>选择工作表:</label>
+        <select v-model="selectedSheet" @change="loadSheetData">
+          <option value="">请选择工作表</option>
+          <option v-for="sheet in sheets" :key="sheet" :value="sheet">{{ sheet }}</option>
+        </select>
+      </div>
+      <div class="skip-config" v-if="selectedSheet">
+        <label>跳过表头行数:</label>
+        <input 
+          type="number" 
+          v-model.number="skipRows" 
+          min="0" 
+          max="10" 
+          @change="processData">
+        <span class="helper-text">从第 {{ skipRows + 1 }} 行开始读取数据</span>
+      </div>
     </div>
 
     <div v-if="previewData.length > 0" class="data-preview">

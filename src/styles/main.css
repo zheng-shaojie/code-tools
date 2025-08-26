@@ -662,26 +662,62 @@ textarea::-webkit-scrollbar-thumb:hover {
     margin-bottom: 20px;
 }
 
-.sheet-header {
+.sheet-header-skip {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.sheet-config,
+.skip-config {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: 10px;
 }
 
-.sheet-header h3 {
+.sheet-config label,
+.skip-config label {
+    font-weight: 500;
     color: #374151;
-    font-size: 1.1em;
-    margin: 0;
+    white-space: nowrap;
 }
 
-.sheet-header select {
-    padding: 6px 12px;
+.sheet-config select,
+.skip-config input {
+    padding: 6px 10px;
     border: 2px solid #e5e7eb;
     border-radius: 6px;
     font-size: 0.9em;
-    background: white;
-    min-width: 150px;
+}
+
+.skip-config .helper-text {
+    color: #6b7280;
+    font-size: 0.8em;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.sheet-selector label,
+.header-skip label {
+    display: inline-block;
+    width: 120px;
+    font-weight: bold;
+}
+
+.sheet-selector select,
+.header-skip input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.helper-text {
+    color: #7f8c8d;
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 /* 表头配置区域 */

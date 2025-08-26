@@ -57,19 +57,19 @@
 
     <!-- 工作表选择区域 -->
     <div class="sheet-section" v-if="workbook">
-      <div class="sheet-header">
-        <h3>选择工作表</h3>
-        <select v-model="selectedSheet" @change="loadSheetData">
-          <option v-for="sheetName in sheetNames" :key="sheetName" :value="sheetName">
-            {{ sheetName }}
-          </option>
-        </select>
-      </div>
-      
-      <!-- 表头配置 -->
-      <div class="header-config" v-if="selectedSheet">
-        <div class="config-row">
-          <label for="headerRows">表头行数:</label>
+      <div class="sheet-header-skip">
+        <div class="sheet-config">
+          <label>选择工作表:</label>
+          <select v-model="selectedSheet" @change="loadSheetData">
+            <option v-for="sheetName in sheetNames" :key="sheetName" :value="sheetName">
+              {{ sheetName }}
+            </option>
+          </select>
+        </div>
+        
+        <!-- 表头配置 -->
+        <div class="skip-config" v-if="selectedSheet">
+          <label for="headerRows">跳过表头行数:</label>
           <input 
             type="number" 
             id="headerRows"
@@ -78,7 +78,7 @@
             max="10"
             @change="loadSheetData"
             placeholder="表头占用的行数">
-          <small>设置从第几行开始是数据（0表示第一行就是数据）</small>
+          <span class="helper-text">从第 {{ headerRows + 1 }} 行开始是数据</span>
         </div>
       </div>
       

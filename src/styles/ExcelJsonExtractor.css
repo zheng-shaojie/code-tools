@@ -96,6 +96,43 @@
   margin-bottom: 20px;
 }
 
+.sheet-header-skip {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.sheet-config,
+.skip-config {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sheet-config label,
+.skip-config label {
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.sheet-config select,
+.skip-config input {
+  padding: 6px 10px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+.skip-config .helper-text {
+  color: #6b7280;
+  font-size: 0.8em;
+  font-style: italic;
+  white-space: nowrap;
+}
+
 .sheet-selector label,
 .header-skip label {
   display: inline-block;
