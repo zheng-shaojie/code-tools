@@ -1,0 +1,1011 @@
+/* Excel SQL Generator 样式 */
+.excel-sql-generator {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 文件上传区域 */
+.file-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.file-header {
+  margin-bottom: 15px;
+}
+
+.file-header h3 {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.file-drop-zone {
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.dragover {
+  border-color: #0ea5e9;
+  background-color: #f0f9ff;
+}
+
+.file-drop-content {
+  color: #64748b;
+}
+
+.file-drop-content svg {
+  margin-bottom: 12px;
+  color: #94a3b8;
+}
+
+.file-drop-content p {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.file-drop-content small {
+  font-size: 14px;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+}
+
+.file-name {
+  color: #166534;
+  font-weight: 500;
+}
+
+.btn-remove {
+  padding: 6px 12px;
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-remove:hover {
+  background-color: #b91c1c;
+}
+
+/* 进度显示 */
+.progress-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 6px;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-title {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #334155;
+}
+
+.progress-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+.progress-icon.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.progress-details {
+  margin-left: 15px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.progress-percent {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* 工作表选择区域 */
+.sheet-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.sheet-header-skip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sheet-config,
+.skip-config {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sheet-config label,
+.skip-config label {
+  font-weight: 500;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.sheet-config select,
+.skip-config input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.skip-config .helper-text {
+  color: #64748b;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.sheet-preview {
+  margin-top: 20px;
+}
+
+.preview-info {
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 10px;
+}
+
+.preview-table-container {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.preview-table th,
+.preview-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.preview-table th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  color: #334155;
+}
+
+.preview-table td {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* 数据库表名配置区域 */
+.table-name-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.table-name-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.table-name-header h3 {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.table-name-status .status-success {
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.table-name-status .status-required {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.table-name-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.table-name-label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.required-mark {
+  color: #dc2626;
+}
+
+.table-name-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.table-name-input {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.table-name-input.input-error {
+  border-color: #dc2626;
+}
+
+.table-name-input.input-success {
+  border-color: #16a34a;
+}
+
+.table-name-hints .hint-error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.table-name-hints .hint-success {
+  color: #16a34a;
+  font-size: 13px;
+}
+
+/* SQL配置区域 */
+.sql-config-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.sql-config-section .config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sql-config-section h3 {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-toggle-config {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #475569;
+  transition: all 0.2s;
+}
+
+.btn-toggle-config:hover {
+  background: #e2e8f0;
+}
+
+.toggle-icon {
+  transition: transform 0.2s;
+}
+
+.toggle-icon.collapsed {
+  transform: rotate(-90deg);
+}
+
+.config-content {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+}
+
+.config-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.config-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.config-row label {
+  font-weight: 500;
+  color: #374151;
+  min-width: 80px;
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-group label {
+  font-weight: normal;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.batch-size-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.batch-size-input input {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 120px;
+}
+
+.batch-size-input small {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* INSERT自定义列配置 */
+.insert-custom-columns {
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.insert-custom-columns label {
+  font-weight: 500;
+  color: #374151;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.config-hint {
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.custom-columns-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.custom-column-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.custom-column-row input,
+.custom-column-row select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.column-name-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.value-type-select {
+  min-width: 140px;
+}
+
+.column-value-input {
+  flex: 1;
+  min-width: 120px;
+}
+
+.start-value-select {
+  min-width: 120px;
+}
+
+.quote-mode-select {
+  min-width: 120px;
+}
+
+.btn-remove-column {
+  padding: 8px 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-remove-column:hover {
+  background: #b91c1c;
+}
+
+.custom-column-actions {
+  text-align: center;
+  padding: 20px;
+}
+
+.no-custom-columns {
+  color: #64748b;
+  font-style: italic;
+}
+
+.btn-add-column {
+  align-self: flex-start;
+  padding: 10px 16px;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-add-column:hover {
+  background: #0284c7;
+}
+
+/* WHERE条件配置 */
+.where-conditions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.where-condition-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.condition-column-type,
+.condition-column,
+.condition-operator,
+.condition-value,
+.quote-select {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.condition-column-type {
+  min-width: 100px;
+}
+
+.condition-column {
+  flex: 1;
+  min-width: 120px;
+}
+
+.condition-operator {
+  min-width: 80px;
+}
+
+.condition-value {
+  flex: 1;
+  min-width: 120px;
+}
+
+.quote-select {
+  min-width: 100px;
+}
+
+.btn-remove-condition {
+  padding: 8px 12px;
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.btn-remove-condition:hover:not(:disabled) {
+  background: #b91c1c;
+}
+
+.btn-remove-condition:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.btn-add-condition {
+  align-self: flex-start;
+  padding: 10px 16px;
+  background: #0ea5e9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-add-condition:hover {
+  background: #0284c7;
+}
+
+/* 列映射配置 */
+.column-mapping {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.mapping-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.column-mapping h4 {
+  color: #1e293b;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-toggle-mapping {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #475569;
+  transition: all 0.2s;
+}
+
+.btn-toggle-mapping:hover {
+  background: #e2e8f0;
+}
+
+.mapping-info {
+  margin-bottom: 15px;
+}
+
+.mapping-info p {
+  color: #64748b;
+  margin: 0;
+}
+
+.mapping-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mapping-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.mapping-row.inactive {
+  opacity: 0.6;
+  background: #f1f5f9;
+}
+
+.excel-column {
+  min-width: 120px;
+}
+
+.excel-column strong {
+  color: #1e293b;
+}
+
+.excel-column small {
+  color: #64748b;
+}
+
+.db-field-config {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.db-field-input {
+  flex: 1;
+  min-width: 150px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.db-field-input:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+}
+
+.quote-options {
+  display: flex;
+  gap: 10px;
+}
+
+.quote-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.quote-option input {
+  margin: 0;
+}
+
+.mapping-checkbox {
+  width: 18px;
+  height: 18px;
+}
+
+/* 操作按钮 */
+.actions {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* 输出区域 */
+.output-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.output-header {
+  margin-bottom: 20px;
+}
+
+.output-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.output-title h3 {
+  color: #1e293b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.output-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stats-badge {
+  background: #0ea5e9;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.file-size {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.output-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.output-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.format-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.format-option input {
+  margin: 0;
+}
+
+.limit-select {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-copy,
+.btn-download {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-copy {
+  background: #10b981;
+  color: white;
+}
+
+.btn-copy:hover:not(:disabled) {
+  background: #059669;
+}
+
+.btn-copy:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.btn-download {
+  background: #0ea5e9;
+  color: white;
+}
+
+.btn-download:hover:not(:disabled) {
+  background: #0284c7;
+}
+
+.btn-download:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.sql-display {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sql-container {
+  position: relative;
+}
+
+.sql-textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  background: #f8fafc;
+}
+
+.textarea-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+}
+
+.placeholder-content {
+  text-align: center;
+  color: #94a3b8;
+}
+
+.placeholder-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 15px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-page {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-page:hover:not(:disabled) {
+  background: #e2e8f0;
+}
+
+.btn-page:disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.page-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.current-page,
+.total-pages {
+  font-weight: 500;
+}
+
+.page-separator {
+  color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+  .rule-row {
+    flex-direction: column;
+  }
+  
+  .rule-config {
+    grid-template-columns: 1fr;
+  }
+  
+  .condition-config,
+  .action-config,
+  .array-config,
+  .field-config {
+    flex-direction: column;
+  }
+  
+  .object-config,
+  .array-config,
+  .field-config {
+    flex-direction: column;
+  }
+}
