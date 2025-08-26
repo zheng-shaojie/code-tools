@@ -1096,29 +1096,61 @@ export default {
     async downloadFromPreview() {
       if (this.previewResultData) {
         try {
+          console.log('开始生成Excel文件...')
+          
+          // 验证数据
+          if (!this.previewResultData.headers || !this.previewResultData.data) {
+            throw new Error('预览数据不完整')
+          }
+          
+          if (this.previewResultData.data.length === 0) {
+            throw new Error('没有数据可下载')
+          }
+          
           let resultBuffer
           
           // 检查是否有合并信息
           if (this.previewResultData.mergeInfo && this.previewResultData.mergeInfo.length > 0) {
+            console.log('使用带合并单元格的方式生成Excel文件')
             resultBuffer = ExcelProcessor.generateExcelFileWithMerge([
               this.previewResultData.headers, 
               ...this.previewResultData.data
             ], this.previewResultData.mergeInfo)
           } else {
+            console.log('使用普通方式生成Excel文件')
             resultBuffer = ExcelProcessor.generateExcelFile([
               this.previewResultData.headers, 
               ...this.previewResultData.data
             ])
           }
           
+          // 验证生成的缓冲区
+          if (!resultBuffer || resultBuffer.byteLength === 0) {
+            throw new Error('生成的Excel文件为空')
+          }
+          
+          console.log('Excel文件生成成功，大小:', resultBuffer.byteLength, '字节')
+          
+          // 直接下载，像SQL生成器一样
           ExcelProcessor.downloadExcelFile(resultBuffer, 'extracted_data.xlsx')
           
-          // 显示成功提示
-          alert(`成功下载！\n共处理 ${this.previewResultData.data.length} 行数据，新增 ${this.previewResultData.newColumnsCount} 列`)
+          // 移除了alert提示，只保留控制台日志
+          console.log('下载成功')
         } catch (error) {
           console.error('下载失败:', error)
-          alert('下载失败: ' + error.message)
+          const errorMessage = '下载失败: ' + (error.message || error.toString())
+          
+          // 使用element-ui的错误提示（如果可用）
+          if (this.$message) {
+            this.$message.error(errorMessage)
+          } else {
+            // 使用浏览器原生提示
+            alert(errorMessage)
+          }
         }
+      } else {
+        console.warn('没有预览数据可下载')
+        alert('请先预览数据再进行下载')
       }
     },
     

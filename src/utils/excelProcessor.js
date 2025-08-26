@@ -122,17 +122,114 @@ export class ExcelProcessor {
    * @param {string} filename - 文件名
    */
   static downloadExcelFile(buffer, filename) {
-    const blob = new Blob([buffer], { 
-      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' 
-    })
+    try {
+      // 确保buffer是有效的
+      if (!buffer || buffer.byteLength === 0) {
+        throw new Error('无效的文件数据')
+      }
+      
+      // 创建Blob对象
+      const blob = new Blob([buffer], { 
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' 
+      })
+      
+      // 检查文件大小
+      if (blob.size === 0) {
+        throw new Error('生成的文件为空')
+      }
+      
+      // 直接使用传统方法下载，避免复杂逻辑导致的重复下载
+      this.downloadWithAnchor(blob, filename)
+    } catch (error) {
+      console.error('下载文件时出错:', error)
+      throw new Error('下载失败: ' + (error.message || '未知错误'))
+    }
+  }
+  
+  /**
+   * 执行文件下载
+   * @param {Blob} blob - 文件Blob对象
+   * @param {string} filename - 文件名
+   */
+  static performDownload(blob, filename) {
+    // 直接使用传统下载方式
+    this.downloadWithAnchor(blob, filename)
+  }
+  
+  /**
+   * 使用锚点元素下载文件 (传统方式)
+   * @param {Blob} blob - 文件Blob对象
+   * @param {string} filename - 文件名
+   */
+  static downloadWithAnchor(blob, filename) {
+    // 创建对象URL
     const url = URL.createObjectURL(blob)
+    
+    // 创建临时下载链接
     const a = document.createElement('a')
     a.href = url
-    a.download = filename
+    a.download = filename || 'download.xlsx'
+    
+    // 确保元素不会显示在页面上
+    a.style.display = 'none'
+    
+    // 添加到文档中
     document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    URL.revokeObjectURL(url)
+    
+    // 触发点击事件
+    try {
+      // 创建并派发点击事件
+      const clickEvent = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+      })
+      a.dispatchEvent(clickEvent)
+    } catch (eventError) {
+      // 如果MouseEvent不支持，使用click()方法
+      console.warn('MouseEvent创建失败，使用click()方法:', eventError)
+      a.click()
+    }
+    
+    // 延迟清理资源
+    setTimeout(() => {
+      try {
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      } catch (cleanupError) {
+        console.warn('清理资源时出错:', cleanupError)
+      }
+    }, 1000)
+  }
+  
+  /**
+   * 使用现代文件系统API下载文件
+   * @param {Blob} blob - 文件Blob对象
+   * @param {string} filename - 文件名
+   */
+  static async downloadWithFilePicker(blob, filename) {
+    try {
+      const fileHandle = await window.showSaveFilePicker({
+        suggestedName: filename || 'download.xlsx',
+        types: [{
+          description: 'Excel文件',
+          accept: {
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']
+          }
+        }]
+      })
+      
+      const writable = await fileHandle.createWritable()
+      await writable.write(blob)
+      await writable.close()
+      return true
+    } catch (error) {
+      // 用户取消或不支持时抛出错误
+      if (error.name === 'AbortError') {
+        throw new Error('用户取消了下载')
+      }
+      throw error
+    }
   }
 
   /**
